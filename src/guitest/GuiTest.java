@@ -1,9 +1,11 @@
 package guitest;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,7 +20,10 @@ public class GuiTest extends JFrame{
     private JPanel jPanelContent;
     private JTextField jTextField;
     private JButton jButtonSetTextToLabel;
-    public GuiTest() {
+    
+    private void initComponents() {
+        super.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        super.setLocationRelativeTo(null);
         super.setPreferredSize(new Dimension(480,290));
         super.setMaximumSize(new Dimension(480,290));
         super.setMinimumSize(new Dimension(480,290));
@@ -26,10 +31,16 @@ public class GuiTest extends JFrame{
         
         jLabelTitle = new JLabel("Hello World, JPTV20!",SwingConstants.CENTER);
         jLabelTitle.setFont(new java.awt.Font("Tahoma", 0, 24)); 
-        jLabelTitle.setPreferredSize(new Dimension(480,27));
-        jLabelTitle.setMaximumSize(new Dimension(480,27));
+        jLabelTitle.setPreferredSize(new Dimension(480,57));
+        jLabelTitle.setMaximumSize(new Dimension(480,57));
+        jLabelTitle.setPreferredSize(jLabelTitle.getMaximumSize());
+        jLabelTitle.setMinimumSize(jLabelTitle.getMaximumSize());
+        jLabelTitle.setBorder(BorderFactory.createLineBorder(Color.black));
+        jLabelTitle.setAlignmentY(CENTER_ALIGNMENT);
         JPanel panelTitle = new JPanel();
         panelTitle.setPreferredSize(new Dimension(480,54));
+        panelTitle.setBorder(BorderFactory.createLineBorder(Color.blue));
+        panelTitle.setAlignmentY(CENTER_ALIGNMENT);
         panelTitle.add(jLabelTitle);
         
         jTextField = new JTextField(SwingConstants.CENTER);
@@ -58,7 +69,10 @@ public class GuiTest extends JFrame{
         jPanelContent.add(panelTextField);
         jPanelContent.add(panelButton);
         this.add(jPanelContent);
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+    }
+    
+    public GuiTest() {
+        initComponents();
     }
 
     public static void main(String[] args) {
